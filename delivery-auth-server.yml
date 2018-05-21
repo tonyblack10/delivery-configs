@@ -24,11 +24,17 @@ security:
             scope: read,write
 
 spring:
-  h2:
-    console: 
-      enabled: true
-      path: /h2
-  datasource:
-    url: jdbc:h2:mem:desafio;DB_CLOSE_ON_EXIT=FALSE
-  jpa:
-    show-sql: true
+    datasource:
+        data: classpath:/sql/data.sql
+        driver-class-name: com.mysql.jdbc.Driver
+        password: ''
+        platform: mysql
+        schema: classpath:/sql/schema.sql
+        url: jdbc:mysql://localhost/oauth?verifyServerCertificate=false&useSSL=false&requireSSL=false
+        username: root
+    jpa:
+        database-platform: org.hibernate.dialect.MySQLDialect
+        generate-ddl: false
+        hibernate:
+            ddl-auto: none
+        show-sql: true
